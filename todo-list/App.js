@@ -1,22 +1,36 @@
 import React, { useState } from 'react';
-import { View, Text , StyleSheet, TouchableOpacity} from 'react-native';
+import { 
+  View, 
+  Text, 
+  StyleSheet, 
+  TouchableOpacity,
+  TextInput
+} from 'react-native';
+
+import { FontAwesome } from '@expo/vector-icons'
 
 export default function App(){
-  const [nome, setNome] = useState('Jorge')
+  const [tarefa, setTarefa] = useState('');
 
-  function handleMudaNome(){
-   setNome('Aluno Jorge Henrique')
+  function handleAdd(){
+    alert(tarefa)
   }
 
   return(
     <View style={ styles.container }>
-      <Text style={ styles.title }>Código da Aprovação</Text>
-      <Text style={ [styles.title, styles.text] }>Henrique Frank</Text>
-      <Text>{nome}</Text>
+     <Text style={styles.title}> To-do List</Text>
 
-      <TouchableOpacity style={styles.button} onPress={handleMudaNome}>
-        <Text style={styles.buttonText}>Mudar nome</Text>
-      </TouchableOpacity>
+     <View style={styles.containerInput}>
+        <TextInput
+          placeholder="Digite sua tarefa..."
+          style={styles.input}
+          value={tarefa}
+          onChangeText={ (text) => setTarefa(text)}
+        />
+        <TouchableOpacity style={styles.buttonAdd} onPress={handleAdd}>
+          <FontAwesome name="plus" size={20} color="#FFF"/>
+        </TouchableOpacity>
+     </View>
     </View>
 
   )
@@ -25,28 +39,38 @@ export default function App(){
 const styles = StyleSheet.create({
   container:{
     flex: 1,
-    backgroundColor:'#121212',
+    backgroundColor:'#22272e',
     paddingTop: 28,
   },
   title:{
-    fontSize: 32,
-    color: '#f1f1f1',
-    fontWeight: 'bold',
-    textAlign: 'center'
+    fontWeight:'bold',
+    fontSize: 24,
+    color:'#FFF',
+    marginTop: '5%',
+    paddingStart: '5%',
+    marginBottom: 12,
   },
-  text:{
-    color:'blue'
-  },
-  button:{
-    backgroundColor:'green',
-    height: 40,
-    justifyContent: 'center',
+  containerInput:{ 
+    flexDirection: 'row',
+    width: '100%',
+    height: 44,
     alignItems: 'center',
-    marginTop: 30
+    justifyContent: 'center',
+    marginBottom: 22,
   },
-  buttonText:{
-    color: '#FFF',
-    fontWeight: 'bold'
-
+  input:{
+    width: '75%',
+    backgroundColor: '#FBFBFB',
+    height: 44,
+    paddingHorizontal: 8,
+  },
+  buttonAdd:{
+    width: '15%',
+    height: 44,
+    backgroundColor: '#73f7ff',
+    marginLeft: 8,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 4
   }
 })
