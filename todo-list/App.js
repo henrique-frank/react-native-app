@@ -22,7 +22,12 @@ export default function App(){
   {
     key: '2',
     item: 'Estudar react native'
+  },
+  {
+    key: '3',
+    item: 'Estudar nodejs'
   }
+
 ])
 
   function handleAdd(){
@@ -49,6 +54,7 @@ export default function App(){
       data={list}
       keyExtractor={ (item) => item.key}
       renderItem={( {item}) => <Tarefa data = {item}/> }
+      style={styles.list}
      />
 
     </View>
@@ -92,5 +98,13 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 4
+  },
+  list:{
+    flex: 1,
+    backgroundColor: "#FFF",
+    paddingTop: '3%',
+    paddingStart: '4%',
+    marginEnd: '4%'
+
   }
 })
